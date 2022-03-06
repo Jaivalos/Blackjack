@@ -1,0 +1,23 @@
+html, body{
+    margin: 0px;
+    background-color: #f1faee;
+    color: white;
+}
+
+.titulo{
+    color: white;
+    text-align: center;
+    background-color: #1d3557;
+    padding: 35px;
+    font-size: 35px;
+}
+
+.carta{
+    width: 11rem;
+    position: relative;
+    left: 100px;
+    margin-left: -6rem;
+}
+#comutadora-cartas, #jugador-cartas{
+    height: 18rem;
+}
