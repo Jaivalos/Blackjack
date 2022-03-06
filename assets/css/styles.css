@@ -15,9 +15,41 @@ html, body{
 .carta{
     width: 11rem;
     position: relative;
-    left: 100px;
+    left: 70px;
     margin-left: -6rem;
 }
-#comutadora-cartas, #jugador-cartas{
-    height: 18rem;
+#computadora-cartas, #jugador-cartas{
+    height: 20rem;
 }
+
+@media only screen and (max-width: 700px) {
+    .titulo{
+        color: white;
+        text-align: center;
+        background-color: #1d3557;
+        padding: 20px;
+        font-size: 20px;
+    }
+    
+    .carta{
+        width: 7rem;
+        position: relative;
+        left: 40px;
+        margin-left: -5rem;
+    }
+    #computadora-cartas, #jugador-cartas{
+        height: 10rem;
+    }
+    .respDes{
+        margin-top: 30px;
+    }
+  }
+
+  @media only screen and (max-width: 350px) {
+    .cont h1{
+        font-size: 30px;
+    }
+    .btn{
+        font-size: 0.8rem;
+    }
+  }
