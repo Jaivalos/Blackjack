@@ -23,7 +23,7 @@ const crearDeck = () => {
     return deck;
 }
 
-// crearDeck();
+crearDeck();
 
 
 //Esta funcion me permirte tomar una carta
@@ -35,6 +35,18 @@ const pedirCarta = () => {
     console.log(carta);
     console.log(deck);
 
+    return carta;
+
 }
 
 // pedirCarta();
+
+const valorCarta = (carta) => {
+    const valor = carta.substring(0, carta.length - 1);
+    return ( isNaN(valor) == true ) ? 
+            ( ( valor === "A") ? 11 : 10 ) 
+            : valor * 1;  
+}
+
+const valor = valorCarta(pedirCarta());
+console.log(valor);
