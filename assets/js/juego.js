@@ -26,3 +26,15 @@ const crearDeck = () => {
 // crearDeck();
 
 
+//Esta funcion me permirte tomar una carta
+const pedirCarta = () => {
+
+    if(deck.length  === 0){ throw "No hay mas cartas en le deck" }
+
+    let carta = deck.pop();
+    console.log(carta);
+    console.log(deck);
+
+}
+
+// pedirCarta();
