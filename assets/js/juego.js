@@ -10,6 +10,7 @@ let puntosComputadora = 0;
 const btnPedir = document.querySelector("#btnPedir");
 const small = document.querySelectorAll("small");
 const jugadorCartas = document.querySelector("#jugador-cartas");
+const computadoraCartas = document.querySelector("#computadora-cartas");
 
 //Esta funcion crea una nueva baraja
 const crearDeck = () => {
@@ -49,6 +50,24 @@ const valorCarta = (carta) => {
             : valor * 1;  
 }
 
+//Turno de la computadora
+const turnoComputadora = (puntosMinimos) =>{
+
+    do {
+        const carta = pedirCarta();
+        puntosComputadora += valorCarta(carta);
+
+        small[1].innerHTML = puntosComputadora;
+
+        const imgCarta = document.createElement("img");
+        imgCarta.src = `assets/cartas/${ carta }.png`;
+        imgCarta.classList.add("carta");
+
+        computadoraCartas.append(imgCarta);
+    } while ( (puntosComputadora < puntosMinimos) && puntosMinimos <= 21 );
+
+}
+
 //Eventos
 btnPedir.addEventListener("click", () => {
     
@@ -66,10 +85,10 @@ btnPedir.addEventListener("click", () => {
     if( puntosJugador > 21 ){
         alert("Perdiste!");
         btnPedir.disabled = true;
+        turnoComputadora(puntosJugador);
     }else if( puntosJugador === 21 ){
         alert("Ufa ufa");
+        turnoComputadora(puntosJugador);
     }
 
 });
-
-
