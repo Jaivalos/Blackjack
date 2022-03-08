@@ -8,6 +8,7 @@ let puntosComputadora = 0;
 
 //Referencias html
 const btnPedir = document.querySelector("#btnPedir");
+const btnDetener = document.querySelector("#btnDetener");
 const small = document.querySelectorAll("small");
 const jugadorCartas = document.querySelector("#jugador-cartas");
 const computadoraCartas = document.querySelector("#computadora-cartas");
@@ -66,6 +67,16 @@ const turnoComputadora = (puntosMinimos) =>{
         computadoraCartas.append(imgCarta);
     } while ( (puntosComputadora < puntosMinimos) && puntosMinimos <= 21 );
 
+    setTimeout(()=>{
+        if(puntosComputadora === puntosMinimos){
+            alert("Nadie gana :(")
+        }else if(puntosMinimos > 21 || puntosComputadora == 21){
+            alert("Computadora gana")
+        }else if(puntosComputadora > 21 || puntosMinimos == 21){
+            alert("Jugador gana");
+        }
+    },10);  
+
 }
 
 //Eventos
@@ -84,11 +95,20 @@ btnPedir.addEventListener("click", () => {
 
     if( puntosJugador > 21 ){
         alert("Perdiste!");
+        btnDetener.disabled = true;
         btnPedir.disabled = true;
         turnoComputadora(puntosJugador);
     }else if( puntosJugador === 21 ){
+        btnDetener.disabled = true;
+        btnPedir.disabled = true;
         alert("Ufa ufa");
         turnoComputadora(puntosJugador);
     }
 
 });
+
+btnDetener.addEventListener("click", () => {
+    btnDetener.disabled = true;
+    btnPedir.disabled = true;
+    turnoComputadora(puntosJugador);
+})
