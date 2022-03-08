@@ -3,6 +3,13 @@ let deck = [];
 const types = ["C", "D", "H", "A"];
 const specials = ["A", "J", "Q", "K"];
 
+let puntosJugador = 0;
+let puntosComputadora = 0;
+
+//Referencias html
+const btnPedir = document.querySelector("#btnPedir");
+const small = document.querySelectorAll("small");
+
 //Esta funcion crea una nueva baraja
 const crearDeck = () => {
     for (let index = 2; index < 10; index++) {
@@ -19,7 +26,6 @@ const crearDeck = () => {
 
     // console.log(deck);
     deck = _.shuffle(deck);
-    console.log(deck);
     return deck;
 }
 
@@ -28,15 +34,9 @@ crearDeck();
 
 //Esta funcion me permirte tomar una carta
 const pedirCarta = () => {
-
     if(deck.length  === 0){ throw "No hay mas cartas en le deck" }
-
     let carta = deck.pop();
-    console.log(carta);
-    console.log(deck);
-
     return carta;
-
 }
 
 // pedirCarta();
@@ -48,5 +48,14 @@ const valorCarta = (carta) => {
             : valor * 1;  
 }
 
-const valor = valorCarta(pedirCarta());
-console.log(valor);
+//Eventos
+btnPedir.addEventListener("click", () => {
+    
+    const carta = pedirCarta();
+    puntosJugador += valorCarta(carta);
+
+    small[0].innerHTML = puntosJugador;
+
+});
+
+
